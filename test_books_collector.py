@@ -95,3 +95,12 @@ class TestBooksCollector:
         assert 'Книга 2' not in favorites
         assert len(favorites) == 2
 #тест на вывод списка избранных книг
+
+    def test_delete_book_from_favorites(self):
+        books_collector = BooksCollector()
+        books_collector.add_new_book('Срочно удалить')
+        books_collector.add_book_in_favorites('Срочно удалить')
+        assert 'Срочно удалить' in books_collector.get_list_of_favorites_books()
+        books_collector.delete_book_from_favorites('Срочно удалить')
+        assert 'Срочно удалить' not in books_collector.get_list_of_favorites_books()
+        
